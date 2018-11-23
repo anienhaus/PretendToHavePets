@@ -1,0 +1,42 @@
+/* Page Styling */
+
+body {
+	background-color: paleturquoise;
+}
+
+h1, h2 {
+	text-align: center;
+}
+
+/* Navbar styling */
+
+nav {
+	display: inline-block;
+	width: 99%;
+	margin-right: 1%;
+	background-color: darkturquoise;
+	padding: 5px;
+}
+
+nav a, a:visited {
+	float: left;
+	padding: 10px;
+	border: solid navy;
+	border-radius: 5px;
+	margin: 3px;
+	background-color: white;
+	color: navy;
+	text-decoration: none;
+}
+
+nav a:hover {
+	color: white;
+	background-color: navy;
+}
+
+nav .active, .active:hover, .active:visited {
+	background-color: darkblue;
+	color: skyblue;
+	border: solid skyblue;
+	pointer-events: none;
+}
