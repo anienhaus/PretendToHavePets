@@ -17,6 +17,10 @@
 		$current = "index";
 		include 'navbar.php';
 	?>
+	<!--Connect to the database-->
+	<?php
+		include "database_signin.php";
+	?>
 	<!--Page content-->
 	<section>
 		<h2>(Name)'s Pets</h2>
