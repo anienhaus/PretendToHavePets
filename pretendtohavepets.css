@@ -1,4 +1,4 @@
-/* Page Styling */
+/* PAGE STYLING */
 
 body {
 	background-color: paleturquoise;
@@ -8,7 +8,7 @@ h1, h2 {
 	text-align: center;
 }
 
-/* Navbar styling */
+/* NAVBAR STYLING */
 
 nav {
 	display: inline-block;
@@ -39,4 +39,10 @@ nav .active, .active:hover, .active:visited {
 	color: skyblue;
 	border: solid skyblue;
 	pointer-events: none;
+}
+
+/* FORM STYLING */
+
+input {
+	margin: 2px;
 }

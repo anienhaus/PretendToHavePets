@@ -15,6 +15,7 @@
 	<!--Include the navigation bar-->
 	<?php 
 		$current = "index";
+		$basedir = "";
 		include 'navbar.php';
 	?>
 	<!--Connect to the database-->

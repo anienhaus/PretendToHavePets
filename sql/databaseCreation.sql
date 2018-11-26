@@ -1,6 +1,6 @@
 -- Drop table, if it already exists --
-DROP TABLE IF EXISTS Users;
 DROP TABLE IF EXISTS Pets;
+DROP TABLE IF EXISTS Users;
 DROP TABLE IF EXISTS Species;
 
 -- Create tables --
@@ -10,6 +10,7 @@ CREATE TABLE Users (
     Password varchar(255),
     Name varchar(255),
     Email varchar(255),
+    UNIQUE (Username),
     PRIMARY KEY (UserID)
 );
 

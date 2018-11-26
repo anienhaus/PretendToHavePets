@@ -1,0 +1,13 @@
+/* Styling for the login page */
+
+#login {
+	display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+}
+
+#login-err-msg {
+	color: red;
+	text-align: center;
+}
