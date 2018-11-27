@@ -1,3 +1,8 @@
+<?php
+	$basedir = "../";
+	include "../check_session.php";
+?>
+
 <!doctype html>
 
 <html lang="en">
@@ -8,6 +13,7 @@
 	<meta charset="UTF-8">
 	<meta name="assignment" content="CSCI 445: Final Project">
 	<meta name="viewport" content="width=device-width">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <!--The body of the webpage-->
@@ -15,7 +21,6 @@
 	<!--Include the navigation bar-->
 	<?php 
 		$current = "adopt";
-		$basedir = "../";
 		include '../navbar.php';
 	?>
 	<!--Page content-->

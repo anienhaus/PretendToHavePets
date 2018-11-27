@@ -15,10 +15,10 @@ CREATE TABLE Users (
 );
 
 CREATE TABLE Species (
-		SpeciesID int AUTO_INCREMENT,
-		Name varchar(255),
-		ImagePath varchar(255),
-		PRIMARY KEY (SpeciesID)
+    SpeciesID int AUTO_INCREMENT,
+    Name varchar(255),
+    ImagePath varchar(255),
+    PRIMARY KEY (SpeciesID)
 );
 
 CREATE TABLE Pets (
@@ -27,11 +27,11 @@ CREATE TABLE Pets (
     Name varchar(255),
     Species int,
     HealthLevel int,
-		LastWalked bigint, -- A time
-		HungerLevel int,
-		LastFed bigint, -- A time
-		EnergyLevel int,
-		LastNap bigint, -- A time
+	LastWalked bigint, -- A time
+	HungerLevel int,
+	LastFed bigint, -- A time
+	EnergyLevel int,
+	LastNap bigint, -- A time
     PRIMARY KEY (PetID),
     FOREIGN KEY (Owner) REFERENCES Users(UserID) ON DELETE CASCADE,
     FOREIGN KEY (Species) REFERENCES Species(SpeciesID) ON DELETE CASCADE
