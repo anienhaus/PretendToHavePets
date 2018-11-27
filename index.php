@@ -29,7 +29,14 @@ include "check_session.php";
 	?>
 	<!--Page content-->
 	<section>
-		<h2>(Name)'s Pets</h2>
+		<?php
+			// Get necessary info
+			$userQuery = "SELECT Name FROM Users WHERE UserID = '" . $_SESSION["userID"] . "'";
+			$userInfo = $conn->query($userQuery);
+			$row = $userInfo->fetch_assoc();
+			$usersName = $row["Name"];
+		?>
+		<h2><?php echo $usersName ?>'s Pets</h2>
 		<p>Display list of pets linking to the pet's page</p>
 	</section>
 </body>
