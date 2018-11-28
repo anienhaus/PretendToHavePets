@@ -28,53 +28,49 @@
 	// Connect to the database
 	include "../database_signin.php";
 	$errMsg = "";
+	$name = "";
+	$email = "";
 	$username = "";
 	$password = "";
+	$confirmPassword = "";
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		// Check to see that the username exists
+		$name = $_POST["name"];
+		$email = $_POST["email"];
 		$username = $_POST["username"];
 		$password = $_POST["password"];
-		$userQuery = "SELECT UserID, Password FROM Users WHERE Username = '$username'";
-		$userInfo = $conn->query($userQuery);
-		if ($userInfo->num_rows == 0) {
-			$errMsg = "Username not recognized. Have you created an account?";
-		}
-		// If it exists, check that the password is correct
-		else {
-			$row = $userInfo->fetch_assoc();
-			$correctPassword = $row["Password"];
-			// If both are correct, log in
-			if ($password == $correctPassword) {
-				// Set up session and sign in
-				$_SESSION["userID"] = $row["UserID"];
-				header("Location: ../index.php");
-			}
-			else {
-				$errMsg = "Incorrect password.";
-			}
-		}
+		$confirmPassword = $_POST["confirm-password"];
 	}			
 	?>
 
 	<h1>Pretend to Have Pets</h1>
 	<!--Page content-->
 	<section>
-		<h2>Sign In</h2>
-		<form id="login" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+		<h2>Sign Up</h2>
+		<form id="signup" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 			<fieldset>
 				<div id="login-content">
+					<label for="name">First Name: </label><br>
+					<input type="text" id="name" name="name" value="<?php echo $name ?>" required>
+					<br>
+					<label for="email">Email: </label><br>
+					<input type="text" id="email" name="email" value="<?php echo $email ?>" required>
+					<br>
 					<label for="username">Username: </label><br>
 					<input type="text" id="username" name="username" value="<?php echo $username ?>" required>
 					<br>
 					<label for="password">Password: </label><br>
 					<input type="password" id="password" name="password" value="<?php echo $password ?>" required>
 					<br>
-					<input type="submit" value="Log In" id="submit-login">
+					<label for="confirm-password">Confirm Password: </label><br>
+					<input type="password" id="confirm-password" name="confirm-password" value="<?php echo $confirmPassword ?>" required>
+					<br>
+					<input type="submit" value="Sign Up!" id="submit-login">
 				</div>
 			</fieldset>
-			<div id="login-err-msg"><?php echo $errMsg ?></div>
+			<div id="signup-err-msg"><?php echo $errMsg ?></div>
 		</form>
-		<p>Not a member? <a href="signup.php">Sign Up!</a></p>
+		<p>Already a member? <a href="login.php">Sign In</a></p>
 	</section>
 
 </body>

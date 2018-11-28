@@ -33,13 +33,14 @@
 		$newPassword = $_POST["new-password"];
 		$newConfirm = $_POST["new-confirm"];
 		$userID = $_SESSION["userID"];
-		$userQuery = "SELECT Password FROM Users WHERE UserID = $userID";
+		$userQuery = "SELECT Password, Email FROM Users WHERE UserID = $userID";
 		$userInfo = $conn->query($userQuery);
 		$row = $userInfo->fetch_assoc();
 		// If password is correct, change the password
 		if ($oldPassword == $row["Password"]) {
 			$sql = "UPDATE Users SET Password = '$newPassword' WHERE UserID = $userID";
 			$conn->query($sql);
+			$errMsg = "Your password has been changed.";
 		}
 		else {
 			// Otherwise, give an error message
