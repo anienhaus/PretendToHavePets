@@ -26,15 +26,25 @@
 	$oldPassword = "";
 	$newPassword = "";
 	$newConfirm = "";
+	$errMsg = "";
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
-		// Check to see that the username exists
-		$oldPassword = $_POST["oldPassword"];
-		$newPassword = $_POST["newPassword"];
-		$newConfirm = $_POST["newConfirm"];
-		//$userQuery = "SELECT UserID, Password FROM Users WHERE Username = '$username'";
-		//$userInfo = $conn->query($userQuery);
-		//$row = $userInfo->fetch_assoc();
-		//$correctPassword = $row["Password"];
+		// Check to see that the password is correct
+		$oldPassword = $_POST["old-password"];
+		$newPassword = $_POST["new-password"];
+		$newConfirm = $_POST["new-confirm"];
+		$userID = $_SESSION["userID"];
+		$userQuery = "SELECT Password FROM Users WHERE UserID = $userID";
+		$userInfo = $conn->query($userQuery);
+		$row = $userInfo->fetch_assoc();
+		// If password is correct, change the password
+		if ($oldPassword == $row["Password"]) {
+			$sql = "UPDATE Users SET Password = '$newPassword' WHERE UserID = $userID";
+			$conn->query($sql);
+		}
+		else {
+			// Otherwise, give an error message
+			$errMsg = "That password is incorrect!";
+		}
 	}			
 	?>
 
@@ -61,7 +71,7 @@
 					<input type="submit" value="Submit" id="submit-new-password">
 				</div>
 			</fieldset>
-			<div id="change-password-err-msg"></div>
+			<div id="change-password-err-msg"><?php echo $errMsg ?></div>
 		</form>
 	</section>
 </body>
@@ -81,7 +91,7 @@
 	}
 
 	document.getElementById('change-password').addEventListener("submit", function(e) {
-		if !checkPasswords() {
+		if (checkPasswords() == false) {
 			e.preventDefault();
 		}
 	});
