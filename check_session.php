@@ -1,10 +1,8 @@
 <?php
 	// File with code to set up a session and check if someone is logged in
 
-	if (session_status() == PHP_SESSION_NONE) {
-		// Start a new session if it does not exist yet
-    session_start();
-	}
+	// Resume/start session
+  session_start();
 	if (!isset($_SESSION["userID"])) {
 		// If the user is not logged in, redirect to the login page
 		$path = $basedir . "login/login.php";

@@ -1,7 +1,7 @@
 <?php
-	$basedir = "../";
-	include "../check_session.php";
-	// Redirect to index if they are logged in
+	// If logged in, redirect to the index
+	session_start();
+	$_SESSION['LAST_ACTIVITY'] = $_SERVER['REQUEST_TIME']; 
 	if (isset($_SESSION["userID"])) {
 		header("Location: ../index.php");
 	}
@@ -35,6 +35,8 @@
 		$username = $_POST["username"];
 		$password = $_POST["password"];
 		$userQuery = "SELECT UserID, Password FROM Users WHERE Username = '$username'";
+		//$stmt = $conn->prepare($userQuery);
+		//$stmt->bind_param("s", $username);
 		$userInfo = $conn->query($userQuery);
 		if ($userInfo->num_rows == 0) {
 			$errMsg = "Username not recognized. Have you created an account?";
@@ -53,7 +55,17 @@
 				$errMsg = "Incorrect password.";
 			}
 		}
-	}			
+	}	
+
+	$conn->close();
+
+	// Function to clean data
+	function test_input($data) {
+		$data = trim($data);
+		$data = stripslashes($data);
+		$data = htmlspecialchars($data);
+		return $data;
+	}	
 	?>
 
 	<h1>Pretend to Have Pets</h1>

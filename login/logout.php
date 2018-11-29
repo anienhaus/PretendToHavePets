@@ -1,5 +1,8 @@
 <?php 
+// Resume old session
+session_start();
 // Destroy old session and create new one
+$_SESSION['userID'] = "TEST";
 session_unset();
 session_destroy();
 session_start();

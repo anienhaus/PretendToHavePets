@@ -1,7 +1,7 @@
 <?php
-	$basedir = "../";
-	include "../check_session.php";
-	// Redirect to index if they are logged in
+	// If logged in, redirect to the index
+	session_start();
+	$_SESSION['LAST_ACTIVITY'] = $_SERVER['REQUEST_TIME']; 
 	if (isset($_SESSION["userID"])) {
 		header("Location: ../index.php");
 	}
