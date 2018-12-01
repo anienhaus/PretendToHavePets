@@ -29,9 +29,9 @@
 	$errMsg = "";
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		// Check to see that the password is correct
-		$oldPassword = $_POST["old-password"];
-		$newPassword = $_POST["new-password"];
-		$newConfirm = $_POST["new-confirm"];
+		$oldPassword = test_input($_POST["old-password"]);
+		$newPassword = test_input($_POST["new-password"]);
+		$newConfirm = test_input($_POST["new-confirm"]);
 		$userID = $_SESSION["userID"];
 		$userQuery = "SELECT Password, Email FROM Users WHERE UserID = $userID";
 		$userInfo = $conn->query($userQuery);
@@ -46,7 +46,16 @@
 			// Otherwise, give an error message
 			$errMsg = "That password is incorrect!";
 		}
-	}			
+	}		
+
+	// Function to clean data
+	function test_input($data) {
+		$data = trim($data);
+		$data = stripslashes($data);
+		$data = htmlspecialchars($data);
+		return $data;
+	}	
+
 	?>
 
 	<!--Include the navigation bar-->

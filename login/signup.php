@@ -35,11 +35,11 @@
 	$usernameError = "";
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		// Assign the variables
-		$name = $_POST["name"];
-		$email = $_POST["email"];
-		$username = $_POST["username"];
-		$password = $_POST["password"];
-		$confirmPassword = $_POST["confirm-password"];
+		$name = test_input($_POST["name"]);
+		$email = test_input($_POST["email"]);
+		$username = test_input($_POST["username"]);
+		$password = test_input($_POST["password"]);
+		$confirmPassword = test_input($_POST["confirm-password"]);
 
 		// Check to see that the username doesn't already exist
 		$userQuery = "SELECT UserID FROM Users WHERE Username = '$username'";
@@ -47,7 +47,16 @@
 		if ($userInfo->num_rows != 0) {
 			$usernameError = "Sorry, that username is taken.";
 		}
-	}			
+	}	
+
+	// Function to clean data
+	function test_input($data) {
+		$data = trim($data);
+		$data = stripslashes($data);
+		$data = htmlspecialchars($data);
+		return $data;
+	}	
+
 	?>
 
 	<h1>Pretend to Have Pets</h1>

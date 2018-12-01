@@ -32,8 +32,8 @@
 	$password = "";
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		// Check to see that the username exists
-		$username = $_POST["username"];
-		$password = $_POST["password"];
+		$username = test_input($_POST["username"]);
+		$password = test_input($_POST["password"]);
 		$userQuery = "SELECT UserID, Password FROM Users WHERE Username = '$username'";
 		//$stmt = $conn->prepare($userQuery);
 		//$stmt->bind_param("s", $username);
