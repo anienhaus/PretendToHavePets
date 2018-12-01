@@ -47,6 +47,10 @@
 		if ($userInfo->num_rows != 0) {
 			$usernameError = "Sorry, that username is taken.";
 		}
+		else {
+			// Send confirmation email
+			mail($email, "Pretend to Have Pets Signup Confirmation", "You have signed up.");
+		}
 	}	
 
 	// Function to clean data
@@ -136,7 +140,7 @@
 		}
 		// Validate username
 		var usernamePattern = /^[a-zA-Z0-9 '!#$%^&~]*$/; // Good username
-		if (!pattern.test($("#username").val())) {
+		if (!usernamePattern.test($("#username").val())) {
 			$("#username-err-msg").html("One of those characters is not allowed in usernames.<br>");
 			e.preventDefault()
 		}
