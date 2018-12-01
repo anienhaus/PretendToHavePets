@@ -48,8 +48,15 @@
 			$usernameError = "Sorry, that username is taken.";
 		}
 		else {
+			// Generate activation code
+			$code = generate_code();
+			// Add to the Activation table
+			$insertQuery = "INSERT INTO Activations (Code, Username, Password, Name, Email) VALUES ('$code', '$username', '$password', '$name', '$email')";
+			$conn->query($insertQuery);
 			// Send confirmation email
-			mail($email, "Pretend to Have Pets Signup Confirmation", "You have signed up.");
+			mail($email, "Pretend to Have Pets Signup Confirmation", "Your confirmation code is $code.");
+			// Redirect to confirmation page
+			header("Location: confirmation.php");
 		}
 	}	
 
@@ -60,6 +67,16 @@
 		$data = htmlspecialchars($data);
 		return $data;
 	}	
+
+	// Function to generate a random seven-character string
+	function generate_code() {
+		$chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+		$randomString = "";
+		for ($i = 0; $i < 7; $i++) {
+			$randomString = $randomString . $chars[rand(0, strlen($chars) - 1)];
+		}
+		return $randomString;
+	}
 
 	?>
 

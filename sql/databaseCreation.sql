@@ -1,8 +1,9 @@
 -- Drop table, if it already exists --
 DROP TABLE IF EXISTS Pets;
+DROP TABLE IF EXISTS ResetCodes;
 DROP TABLE IF EXISTS Users;
 DROP TABLE IF EXISTS Species;
-DROP TABLE IF EXISTS ResetCodes;
+DROP TABLE IF EXISTS Activations;
 
 -- Create tables --
 CREATE TABLE Users (
@@ -43,6 +44,15 @@ CREATE TABLE ResetCodes (
     Code varchar(255),
     PRIMARY KEY (UserID),
     FOREIGN KEY (UserID) REFERENCES Users(UserID) ON DELETE CASCADE
+);
+
+CREATE TABLE Activations (
+    Code varchar(255),
+    Username varchar(255),
+    Password varchar(255),
+    Name varchar(255),
+    Email varchar(255),
+    PRIMARY KEY (CODE)
 );
 
 -- Populate species table --

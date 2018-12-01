@@ -1,6 +1,6 @@
 /* Styling for the login page */
 
-#login, #signup, #forgot-password, #reset-password {
+#login, #signup, #forgot-password, #reset-password, #confirm {
 	display: block;
   margin-left: auto;
   margin-right: auto;
