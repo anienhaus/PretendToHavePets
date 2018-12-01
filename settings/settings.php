@@ -32,7 +32,7 @@
 		$oldPassword = test_input($_POST["old-password"]);
 		$newPassword = test_input($_POST["new-password"]);
 		$newConfirm = test_input($_POST["new-confirm"]);
-		$userID = $_SESSION["userID"];
+		$userID = test_input($_SESSION["userID"]);
 		$userQuery = "SELECT Password, Email FROM Users WHERE UserID = $userID";
 		$userInfo = $conn->query($userQuery);
 		$row = $userInfo->fetch_assoc();
@@ -81,7 +81,7 @@
 					<input type="submit" value="Submit" id="submit-new-password">
 				</div>
 			</fieldset>
-			<div id="change-password-err-msg"><?php echo $errMsg ?></div>
+			<div class="err-msg" id="change-password-err-msg"><?php echo $errMsg ?></div>
 		</form>
 	</section>
 </body>

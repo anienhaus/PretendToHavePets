@@ -87,7 +87,7 @@
 			<div class="err-msg"><?php echo $errMsg ?></div>
 		</form>
 		<p>Not a member? <a href="signup.php">Sign Up!</a></p>
-		<p><a href="#">I forgot my password!</a></p>
+		<p><a href="forgot_password.php">I forgot my password!</a></p>
 	</section>
 
 </body>

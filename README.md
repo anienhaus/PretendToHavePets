@@ -8,7 +8,7 @@ TODO
 - Pet interaction
 - Pet adoption
 - Make CSS look good
-- Forogt password page/functionality
+- Test email to send reset code for forgotten password
 - Email confirmation for sign up
 - User added to database after confirmation
 - Change queries on change password, login, and sign up page to be prepared statements

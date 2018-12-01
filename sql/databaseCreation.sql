@@ -2,6 +2,7 @@
 DROP TABLE IF EXISTS Pets;
 DROP TABLE IF EXISTS Users;
 DROP TABLE IF EXISTS Species;
+DROP TABLE IF EXISTS ResetCodes;
 
 -- Create tables --
 CREATE TABLE Users (
@@ -35,6 +36,13 @@ CREATE TABLE Pets (
     PRIMARY KEY (PetID),
     FOREIGN KEY (Owner) REFERENCES Users(UserID) ON DELETE CASCADE,
     FOREIGN KEY (Species) REFERENCES Species(SpeciesID) ON DELETE CASCADE
+);
+
+CREATE TABLE ResetCodes (
+    UserID int,
+    Code varchar(255),
+    PRIMARY KEY (UserID),
+    FOREIGN KEY (UserID) REFERENCES Users(UserID) ON DELETE CASCADE
 );
 
 -- Populate species table --
