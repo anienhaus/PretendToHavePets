@@ -27,19 +27,26 @@
 	<?php
 	// Connect to the database
 	include "../database_signin.php";
-	$errMsg = "";
 	$name = "";
 	$email = "";
 	$username = "";
 	$password = "";
 	$confirmPassword = "";
+	$usernameError = "";
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
-		// Check to see that the username exists
+		// Assign the variables
 		$name = $_POST["name"];
 		$email = $_POST["email"];
 		$username = $_POST["username"];
 		$password = $_POST["password"];
 		$confirmPassword = $_POST["confirm-password"];
+
+		// Check to see that the username doesn't already exist
+		$userQuery = "SELECT UserID FROM Users WHERE Username = '$username'";
+		$userInfo = $conn->query($userQuery);
+		if ($userInfo->num_rows != 0) {
+			$usernameError = "Sorry, that username is taken.";
+		}
 	}			
 	?>
 
@@ -60,19 +67,75 @@
 					<input type="text" id="username" name="username" value="<?php echo $username ?>" required>
 					<br>
 					<label for="password">Password: </label><br>
-					<input type="password" id="password" name="password" value="<?php echo $password ?>" required>
+					<input type="password" id="password" name="password" onkeyup="checkPasswords()" value="<?php echo $password ?>" required>
 					<br>
 					<label for="confirm-password">Confirm Password: </label><br>
-					<input type="password" id="confirm-password" name="confirm-password" value="<?php echo $confirmPassword ?>" required>
+					<input type="password" id="confirm-password" name="confirm-password" onkeyup="checkPasswords()" value="<?php echo $confirmPassword ?>" required>
 					<br>
 					<input type="submit" value="Sign Up!" id="submit-login">
 				</div>
 			</fieldset>
-			<div id="signup-err-msg"><?php echo $errMsg ?></div>
+			<div class="err-msg">
+				<span id="name-err-msg"></span>
+				<span id="email-err-msg"></span>
+				<span id="username-err-msg"><?php echo $usernameError ?></span>
+				<span id="password-err-msg"></span>
+			</div>
 		</form>
 		<p>Already a member? <a href="login.php">Sign In</a></p>
 	</section>
 
 </body>
+
+<script>
+	
+	// Check if the two typed passwords match, outputting an error message if they don't
+	function checkPasswords() {
+		if ($("#password").val() != $("#confirm-password").val()) {
+			$("#password-err-msg").html("Those passwords don't match!<br>");
+			return false;
+		}
+		else {
+			$("#password-err-msg").html("");
+			return true;
+		}
+	}
+
+	// Check that all of the given fields are appropriate
+	document.getElementById('signup').addEventListener("submit", function(e) {
+		// Check that the two given passwords match
+		if (checkPasswords() == false) {
+			e.preventDefault();
+		}
+		// Check that the name is okay
+		var pattern = /^[a-zA-Z ']*$/; // Good name
+		if (!pattern.test($("#name").val())) {
+			$("#name-err-msg").html("Name may only include letters, spaces, and apostrophes.<br>");
+			e.preventDefault()
+		}
+		else {
+			$("#name-err-msg").html("");
+		}
+		// Validate email
+		var emailPattern = /[a-zA-z0-9]+@[a-zA-Z0-9](.[a-zA-Z0-9])+/; // Good email regex
+		if (!emailPattern.test($("#email").val())) {
+			$("#email-err-msg").html("Please enter a valid email address.<br>");
+			e.preventDefault();
+		}
+		else {
+			$("#email-err-msg").text("");
+		}
+		// Validate username
+		var usernamePattern = /^[a-zA-Z0-9 '!#$%^&~]*$/; // Good username
+		if (!pattern.test($("#username").val())) {
+			$("#username-err-msg").html("One of those characters is not allowed in usernames.<br>");
+			e.preventDefault()
+		}
+		else {
+			$("#username-err-msg").html("");
+		}
+	});
+		
+</script>
 
 </html>

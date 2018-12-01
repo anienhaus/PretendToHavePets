@@ -7,7 +7,7 @@
   width: 20%;
 }
 
-#login-err-msg, #signup-err-msg {
+.err-msg {
 	color: red;
 	text-align: center;
 }

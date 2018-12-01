@@ -84,9 +84,10 @@
 					<input type="submit" value="Log In" id="submit-login">
 				</div>
 			</fieldset>
-			<div id="login-err-msg"><?php echo $errMsg ?></div>
+			<div class="err-msg"><?php echo $errMsg ?></div>
 		</form>
 		<p>Not a member? <a href="signup.php">Sign Up!</a></p>
+		<p><a href="#">I forgot my password!</a></p>
 	</section>
 
 </body>
