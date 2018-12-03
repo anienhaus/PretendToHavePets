@@ -2,10 +2,34 @@
 
 body {
 	background-color: paleturquoise;
+	color: navy;
 }
 
 h1, h2 {
 	text-align: center;
+}
+
+.petStats {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.stats {
+	margin-left: 5%;
+	font-size: 17px;
+}
+
+.petName {
+	text-align: center;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+#pets {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	margin-top: 5%;
 }
 
 /* NAVBAR STYLING */
