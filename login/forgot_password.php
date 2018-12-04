@@ -5,6 +5,8 @@
 	if (isset($_SESSION["userID"])) {
 		header("Location: ../index.php");
 	}
+	$current="changePassword";
+	include "../check_session.php";
 ?>
 
 <!doctype html>

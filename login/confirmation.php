@@ -19,6 +19,7 @@
 	<meta name="assignment" content="CSCI 445: Final Project">
 	<meta name="viewport" content="width=device-width">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="icon" type="image/ico" href="../images/favicon.ico">
 </head>
 
 <!--The body of the webpage-->

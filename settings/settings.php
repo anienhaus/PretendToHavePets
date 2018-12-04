@@ -1,5 +1,6 @@
 <?php
 	$basedir = "../";
+	$current="settings";
 	include "../check_session.php";
 ?>
 
