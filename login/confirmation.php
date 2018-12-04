@@ -22,7 +22,7 @@
 </head>
 
 <!--The body of the webpage-->
-<body>
+<body class="login-pages">
 
 	<?php
 	// Connect to the database
