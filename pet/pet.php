@@ -29,8 +29,6 @@
             $petInfo = mysqli_fetch_assoc($pet);
             echo "<h2>" . $petInfo['Name'] . "</h2>";
 
-            date("m/d/Y h:i");
-
             $species = $petInfo['Species'];
             $sql = "SELECT ImagePath FROM Species WHERE SpeciesID='$species'";
             $result = $conn->query($sql);
