@@ -2,11 +2,10 @@ PHP: Pretend to Have Pets
 ------------------------
 ------------------------
 
+PHP: Pretend to Have Pets is a website where you can adopt and care for virtual pets of various spieces.
 
 Account Management
 ---------------------
-
-PHP: Pretend to Have Pets is a website where you can adopt and care for virtual pets of various species. 
 
 Getting Started
 ---------------
