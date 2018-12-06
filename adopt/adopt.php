@@ -69,6 +69,16 @@
 				$speciesFromTable = $conn->query($sql);
 				$row = mysqli_fetch_assoc($speciesFromTable);
 				$speciesID = $row['SpeciesID'];
+				$currentTime = new DateTime('now');
+				$last_walked = date_format($current_date, "m-d-Y H:i:s");
+				$last_fed = date_format($current_date, "m-d-Y H:i:s");
+				$last_nap = date_format($current_date, "m-d-Y H:i:s");
+
+				//Last stat updates will automatically be the current time when adopted
+				$currentTime = new DateTime('now');
+				$last_walked = date_format($current_date, "m-d-Y H:i:s");
+				$last_fed = date_format($current_date, "m-d-Y H:i:s");
+				$last_nap = date_format($current_date, "m-d-Y H:i:s");
 
 				//Last stat updates will automatically be the current time when adopted
 				$currentTime = new DateTime('now');
