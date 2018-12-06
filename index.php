@@ -51,7 +51,7 @@ include "check_session.php";
 					$imagePath = $sRow['ImagePath'];
 
 					echo "<div class='petSquare'>";
-					echo "<a href='" . $basedir . "pet/pet.php?id=" . $row['PetID'] . "'>";
+					echo "<a style='text-decoration: none;' href='" . $basedir . "pet/pet.php?id=" . $row['PetID'] . "'>";
 					echo "<p class='petName'>" . $row['Name'] . "</p>";
 					echo "<img id='picture' style='width: 300; height: 260;' src='" . $imagePath . "'>";
 					echo "</a>";
