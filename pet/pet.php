@@ -18,7 +18,6 @@
     <meta name="viewport" content="width=device-width">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
-
 <body>
     <!--Include the navigation bar-->
     <section>
@@ -50,14 +49,27 @@
             ?>    
         </span>
         <img src=<?php echo "../" . $imagePath;?>>
+        <script>
+            function action(event){
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                        if (this.readyState == 4 && this.status == 200) {
+                            console.log(this.responseText);
+                        }
+                    }
+                var petId = <?php echo json_encode($petInfo["PetID"]);?>;
+                xhttp.open("GET", "petAction.php?action=" + event + "&petID=" + petId, true);
+                xhttp.send();
+            }
+        </script>
         <fieldset>
             <legend>Pet Stats</legend>
-            <p>Energy: <?php echo $petInfo['EnergyLevel'];?></p> 
-            <button>Take a nap</button>
-            <p>Hunger: <?php echo $petInfo['HungerLevel'];?></p>
-            <button>Feed me</button>
-            <p>Health: <?php echo $petInfo['HealthLevel'];?></p>
-            <button>Take me for a walk</button>
+            <p id="energy">Energy: <?php echo $petInfo['EnergyLevel'];?></p> 
+            <button onclick="action('nap');"">Take a nap</button>
+            <p id="hunger">Hunger: <?php echo $petInfo['HungerLevel'];?></p>
+            <button onclick='action("feed");'>Feed me</button>
+            <p id="health">Health: <?php echo $petInfo['HealthLevel'];?></p>
+            <button onclick='action("walk");'>Take me for a walk</button>
         </fieldset>
     <section>
 </body>
