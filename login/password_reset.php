@@ -6,7 +6,6 @@
 		header("Location: ../index.php");
 	}
 	$current="resetPassword";
-	include "../check_session.php";
 ?>
 
 <!doctype html>
