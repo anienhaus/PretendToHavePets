@@ -6,6 +6,7 @@
 	if (!isset($_SESSION["userID"])) {
 		// If the user is not logged in, redirect to the login page
 		$path = $basedir . "login/login.php";
+		echo $path;
 		header("Location: $path");
 	}
 	else {
@@ -27,5 +28,11 @@
 			// Update last usage time
 			$_SESSION['LAST_ACTIVITY'] = $time;
 		}
+	}
+	if($current == "index"){
+		echo '<link rel="icon" type="image/ico" href="images/favicon.ico">';
+	}
+	else {
+		echo '<link rel="icon" type="image/ico" href="../images/favicon.ico">';
 	}
 ?>

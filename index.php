@@ -1,5 +1,6 @@
 <?php
-$basedir = "";
+$basedir = "/PretendToHavePets/";
+$current = "index";
 include "check_session.php";
 ?>
 
@@ -20,7 +21,6 @@ include "check_session.php";
 <body>
 	<!--Include the navigation bar-->
 	<?php 
-		$current = "index";
 		include 'navbar.php';
 	?>
 	<!--Connect to the database-->
@@ -37,7 +37,28 @@ include "check_session.php";
 			$usersName = $row["Name"];
 		?>
 		<h2><?php echo $usersName ?>'s Pets</h2>
-		<p>Display list of pets linking to the pet's page</p>
+		<div id="pets">
+			<?php 
+				$userID = $_SESSION["userID"];
+				$sql = "SELECT * FROM Pets WHERE Owner='$userID'";
+				$petInfo = $conn->query($sql);
+
+				while($row = $petInfo->fetch_assoc()) {
+					$species = $row['Species'];
+					$sql = "SELECT ImagePath FROM Species WHERE SpeciesID='$species'";
+					$speciesInfo = $conn->query($sql);
+					$sRow = $speciesInfo->fetch_assoc();
+					$imagePath = $sRow['ImagePath'];
+
+					echo "<div class='petSquare'>";
+					echo "<a href='" . $basedir . "pet/pet.php?id=" . $row['PetID'] . "'>";
+					echo "<p class='petName'>" . $row['Name'] . "</p>";
+					echo "<img id='picture' style='width: 300; height: 260;' src='" . $imagePath . "'>";
+					echo "</a>";
+					echo "</div>";
+				}
+			?>
+		</div>
 	</section>
 </body>
 

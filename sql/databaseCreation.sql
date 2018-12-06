@@ -29,11 +29,11 @@ CREATE TABLE Pets (
     Name varchar(255),
     Species int,
     HealthLevel int,
-	LastWalked bigint, -- A time
+	LastWalked text, -- A time
 	HungerLevel int,
-	LastFed bigint, -- A time
+	LastFed text, -- A time
 	EnergyLevel int,
-	LastNap bigint, -- A time
+	LastNap text, -- A time
     PRIMARY KEY (PetID),
     FOREIGN KEY (Owner) REFERENCES Users(UserID) ON DELETE CASCADE,
     FOREIGN KEY (Species) REFERENCES Species(SpeciesID) ON DELETE CASCADE
@@ -56,4 +56,6 @@ CREATE TABLE Activations (
 );
 
 -- Populate species table --
--- INSERT INTO Species (Name, ImagePath) VALUES ("Cat", "../images/cat.jpg");
+INSERT INTO Species (Name, ImagePath) VALUES ("Cat", "images/cat.png"), ("Dog", "images/dog.jpg"), ("Hamster", "images/hamster.jpg"), ("Ferret", "images/ferret.png"),
+    ("Bird", "images/bird.jpg"), ("Fish", "images/fish.png"), ("Chinchilla", "images/chinchilla.png"), ("Dragon", "images/dragon.png"), ("Wolf", "images/wolf.png"), 
+    ("Flying Squirrel", "images/flyingsquirrel.png");
