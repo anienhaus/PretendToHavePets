@@ -22,6 +22,7 @@
     <!--Include the navigation bar-->
     <section>
         <?php         
+            //This function will update the pet stats new new values
             function updateLevel($type, $amount, $id, $conn){
                 if($type == 'energy'){
                     $sql = "UPDATE Pets SET EnergyLevel='$amount' WHERE PetID='$id'";
@@ -36,12 +37,17 @@
             }
 
             include '../navbar.php';
+
             $petID = $_GET['id'];
             $sql = "SELECT * FROM Pets WHERE PetID='$petID'";
             $pet = $conn->query($sql);
             $petInfo = mysqli_fetch_assoc($pet);
+            if($pet->num_rows == 0){
+                header("Location: /PretendToHavePets");
+            }
             echo "<h2>" . $petInfo['Name'] . "</h2>";
 
+            //Calculate time since stats were increased by walking, feeding, or napping
             date_default_timezone_set("America/Denver");
             $current_time = new DateTime('now');
             $last_walked = new DateTime($petInfo['LastWalked']);
@@ -57,6 +63,7 @@
             $last_nap_diff = date_diff($current_time, $last_nap);
             $last_nap_mins = $last_nap_diff->format("%i");
 
+            //Determine what decrement in stats should be based on time passed
             if($last_walked_mins >= 1){
                 $new_health = $petInfo['HealthLevel'] - 5;
 
@@ -123,6 +130,7 @@
                 updateLevel('energy', $new_energy, $petID, $conn);
             }
 
+            //Get new pet info since stats may have been decremented
             $sql = "SELECT * FROM Pets WHERE PetID='$petID'";
             $pet = $conn->query($sql);
             $petInfo = mysqli_fetch_assoc($pet);
@@ -133,8 +141,10 @@
             $row = mysqli_fetch_assoc($result);
             $imagePath = $row['ImagePath'];
         ?>
+
         <span>
-            <?php
+            <?php 
+                //Show an urgent message if pet is in need
                 if($petInfo['EnergyLevel'] < 10) {
                     echo "I need a nap!";
                 }
@@ -148,18 +158,26 @@
         </span>
         <img src=<?php echo "../" . $imagePath;?>>
         <script>
+            //Handles pet interaction clicks with an AJAX call to update the database
             function action(event){
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function() {
                         if (this.readyState == 4 && this.status == 200) {
+                            //Update the info shown in pet stats or redirect if pet is set free
+                            if(event == 'free'){
+                                window.location.href = '/PretendToHavePets';
+                            }
                             if(event == 'nap'){
                                 $('#energy').html("Energy: 100");
+                                $('span').html("");
                             }
                             if(event == 'feed'){
                                 $('#hunger').html("Hunger: 100");
+                                $('span').html("");
                             }
                             if(event == 'walk'){
                                 $('#health').html("Health: 100");
+                                $('span').html("");
                             }
                         }
                     }
@@ -177,5 +195,6 @@
             <p id="health">Health: <?php echo $petInfo['HealthLevel'];?></p>
             <button onclick='action("walk");'>Take me for a walk</button>
         </fieldset>
+        <button id="free" onclick='action("free");'>Let me into the wild</button>
     <section>
 </body>
