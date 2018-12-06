@@ -29,11 +29,11 @@ CREATE TABLE Pets (
     Name varchar(255),
     Species int,
     HealthLevel int,
-	LastWalked bigint, -- A time
+	LastWalked text, -- A time
 	HungerLevel int,
-	LastFed bigint, -- A time
+	LastFed text, -- A time
 	EnergyLevel int,
-	LastNap bigint, -- A time
+	LastNap text, -- A time
     PRIMARY KEY (PetID),
     FOREIGN KEY (Owner) REFERENCES Users(UserID) ON DELETE CASCADE,
     FOREIGN KEY (Species) REFERENCES Species(SpeciesID) ON DELETE CASCADE

@@ -1,11 +1,11 @@
 /* Styling for the password change page */
 
 #change-password {
-	display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 500px;
-  margin-top: 50px; 
+  	display: block;
+  	margin-left: auto;
+ 	margin-right: auto;
+ 	width: 500px;
+ 	margin-top: 50px; 
 }
 
 #change-password-err-msg {

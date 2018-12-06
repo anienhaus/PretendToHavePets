@@ -1,3 +1,4 @@
+<!doctype html>
 <?php
 	// If logged in, redirect to the index
 	session_start();
@@ -7,13 +8,12 @@
 	}
 ?>
 
-<!doctype html>
 
 <html lang="en">
 <link rel="icon" type="image/ico" href="../images/favicon.ico">
 
 <head>
-	<title>Pretend to Have Pets</title>
+	<title>Home</title>
 	<link rel="stylesheet" href="../pretendtohavepets.css">
 	<link rel="stylesheet" href="login.css">
 	<meta charset="UTF-8">
