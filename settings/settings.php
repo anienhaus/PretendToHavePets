@@ -66,7 +66,7 @@
 	?>
 	<!--Page content-->
 	<section>
-		<h2>Change Password</h2>
+		<h2 class="page_title">Change Password</h2>
 		<form id="change-password" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 			<fieldset>
 				<div id="new-password-content">
@@ -79,7 +79,7 @@
 					<label for="new-confirm">Confirm New Password: </label><br>
 					<input type="password" id="new-confirm" name="new-confirm" onkeyup="checkPasswords()" value="<?php echo $newConfirm ?>" required>
 					<br>
-					<input type="submit" value="Submit" id="submit-new-password">
+					<input id="submit" type="submit" value="Submit" id="submit-new-password">
 				</div>
 			</fieldset>
 			<div class="err-msg" id="change-password-err-msg"><?php echo $errMsg ?></div>

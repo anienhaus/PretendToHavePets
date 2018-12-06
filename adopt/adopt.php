@@ -83,12 +83,13 @@
 	?>
 	<!--Page content-->
 	<section>
-		<h2>Pick a Pet</h2>
-		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+		<h2 class="page_title">Pick a Pet</h2>
 		<img id="picture" style="width: 0; height:0;">
+		<div class="adopt_options"><div>
+		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
 		<fieldset id="speciesSelect">
-			<legend>Pet Species</legend>
-			<select name="species" onChange="handleSelect();" required>
+			<p id="species_label">Pet Species<br></p>
+			<select id="species" name="species" onChange="handleSelect();" required>
 				<option disabled selected value>Pet Options</option>
 				<?php 
 					$species = $conn->query($query);
@@ -105,11 +106,12 @@
 			</select>
 		</fieldset>
 		<fieldset id="petInfo">
-			<legend>Pet Info</legend>
-			What's their name? <input type="text" name="petName" id="petName" required>*
+			<!-- <legend>Pet Info</legend> -->
+			<p id="name_label">What's their name? <br></p>
+				<input type="text" name="petName" id="petName" required>*
 			<?php echo $err;?>
 		</fieldset>
-	<input class="submit" type="submit">
+	<input id="submit" class="submit" type="submit">
 	</form>
 	</section>
 </body>

@@ -36,7 +36,7 @@ include "check_session.php";
 			$row = $userInfo->fetch_assoc();
 			$usersName = $row["Name"];
 		?>
-		<h2><?php echo $usersName ?>'s Pets</h2>
+		<h2 class="page_title"><?php echo $usersName ?>'s Pets</h2>
 		<div id="pets">
 			<?php 
 				$userID = $_SESSION["userID"];

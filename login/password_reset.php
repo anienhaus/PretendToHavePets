@@ -89,7 +89,7 @@
 	<h1>Pretend to Have Pets</h1>
 	<!--Page content-->
 	<section>
-		<h2>Reset Password</h2>
+		<h2 class="page_title">Reset Password</h2>
 		<p>Please enter the password reset code that was emailed to you.<br>
 		Didn't receive a code? <a href="forgot_password.php">Request a Code</a></p>
 		<form id="reset-password" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
