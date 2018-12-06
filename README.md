@@ -3,7 +3,7 @@ PHP: Pretend to Have Pets
 ------------------------
 
 
-1. Account Management
+Account Management
 ---------------------
 
 PHP: Pretend to Have Pets is a website where you can adopt and care for virtual pets of various species. 
@@ -23,7 +23,7 @@ Once logged in, you will have the option to change your password on the "Setting
 If you have forgotten your password, click the "I forgot my password!" link. From here, enter your username and email. An email will be sent to you with a code that will allow you to reset your password. Enter this code along with your new desired password in order to change it.
 
 
-2. Pet Interaction
+Pet Interaction
 ------------------
 
 Adopting a Pet
