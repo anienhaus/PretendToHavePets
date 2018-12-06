@@ -22,6 +22,7 @@
 </head>
 
 <script>
+	//Shows image of pet when one is selected from dropdown
 	function handleSelect() {
 		 <?php 
             $images = array();
@@ -48,10 +49,12 @@
 		$ownerID = $_SESSION["userID"];
 		$err="";
 
+		//If a pet has been submitted, update the database and redirect to the index page
 		if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			$petName = test_input($_POST["petName"]);
 			$species = $_POST["species"];
 
+			//Check to see if user already owns a pet with the submitted name
 			$sql = "SELECT Name FROM Pets WHERE Owner='$ownerID'";
 			$currentPets = $conn->query($sql);
 			while($row = $currentPets->fetch_assoc()){
@@ -60,14 +63,25 @@
 				}
 			}
 
+			//If a pet with the submitted name doesn't exist, insert into database
 			if($err == ""){
 				$sql = "SELECT SpeciesID FROM Species WHERE Name='$species'";
 				$speciesFromTable = $conn->query($sql);
 				$row = mysqli_fetch_assoc($speciesFromTable);
 				$speciesID = $row['SpeciesID'];
+				$currentTime = new DateTime('now');
+				$last_walked = date_format($current_date, "m-d-Y H:i:s");
+				$last_fed = date_format($current_date, "m-d-Y H:i:s");
+				$last_nap = date_format($current_date, "m-d-Y H:i:s");
+
+				//Last stat updates will automatically be the current time when adopted
+				$currentTime = new DateTime('now');
+				$last_walked = date_format($current_date, "m-d-Y H:i:s");
+				$last_fed = date_format($current_date, "m-d-Y H:i:s");
+				$last_nap = date_format($current_date, "m-d-Y H:i:s");
 
 				$sql = "INSERT INTO Pets (Owner, Name, Species, HealthLevel, LastWalked, HungerLevel, LastFed, EnergyLevel, LastNap) VALUES 
-					('$ownerID', '$petName', '$speciesID', 100, 100, 100, 100, 100, 100)";
+					('$ownerID', '$petName', '$speciesID', 100, '$last_walked', 100, '$last_fed', 100, '$last_nap')";
 				$conn->query($sql);
 				header("Location: " . $basedir);
 			}
@@ -87,11 +101,14 @@
 		<img id="picture" style="width: 0; height:0;">
 		<div class="adopt_options"><div>
 		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+		<div class="adopt_options"><div>
+		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
 		<fieldset id="speciesSelect">
 			<p id="species_label">Pet Species<br></p>
 			<select id="species" name="species" onChange="handleSelect();" required>
 				<option disabled selected value>Pet Options</option>
 				<?php 
+					//Create dropdown based on species in the database
 					$species = $conn->query($query);
 					if($species->num_rows == 0){
 						echo "No species found";
@@ -111,7 +128,7 @@
 				<input type="text" name="petName" id="petName" required>*
 			<?php echo $err;?>
 		</fieldset>
-	<input id="submit" class="submit" type="submit">
+	<input id="submit" class="submit" type="submit" value="Adopt">
 	</form>
 	</section>
 </body>

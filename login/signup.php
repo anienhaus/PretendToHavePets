@@ -55,7 +55,8 @@
 			$insertQuery = "INSERT INTO Activations (Code, Username, Password, Name, Email) VALUES ('$code', '$username', '$password', '$name', '$email')";
 			$conn->query($insertQuery);
 			// Send confirmation email
-			mail($email, "Pretend to Have Pets Signup Confirmation", "Your confirmation code is $code.");
+			//mail($email, "Pretend to Have Pets Signup Confirmation", "Your confirmation code is $code.");
+			//echo '<a href=\"mailto:$email\">';
 			// Redirect to confirmation page
 			header("Location: confirmation.php");
 		}
