@@ -23,7 +23,7 @@
 </head>
 
 <!--The body of the webpage-->
-<body>
+<body class="login-pages">
 
 	<?php
 	// Connect to the database
@@ -103,7 +103,7 @@
 					<label for="confirm-password">Confirm Password: </label><br>
 					<input type="password" id="confirm-password" name="confirm-password" onkeyup="checkPasswords()" value="<?php echo $confirmPassword ?>" required>
 					<br>
-					<input type="submit" value="Sign Up!" id="submit-login">
+					<input id="submit" type="submit" value="Sign Up!" id="submit-login">
 				</div>
 			</fieldset>
 			<div class="err-msg">

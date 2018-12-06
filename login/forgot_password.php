@@ -24,7 +24,7 @@
 </head>
 
 <!--The body of the webpage-->
-<body>
+<body class="login-pages">
 
 	<?php
 	// Connect to the database
@@ -91,7 +91,7 @@
 					<label for="email">Email: </label><br>
 					<input type="text" id="email" name="email" value="<?php echo $email ?>" required>
 					<br>
-					<input type="submit" value="Send" id="submit-login">
+					<input id="submit" type="submit" value="Send" id="submit-login">
 				</div>
 			</fieldset>
 			<div class="err-msg" id="err-msg"><?php echo $errMsg ?></div>

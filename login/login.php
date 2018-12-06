@@ -23,7 +23,7 @@
 </head>
 
 <!--The body of the webpage-->
-<body>
+<body class="login-pages">
 
 	<?php
 	// Connect to the database
@@ -82,7 +82,7 @@
 					<label for="password">Password: </label><br>
 					<input type="password" id="password" name="password" value="<?php echo $password ?>" required>
 					<br>
-					<input type="submit" value="Log In" id="submit-login">
+					<input id="submit" type="submit" value="Log In" id="submit-login">
 				</div>
 			</fieldset>
 			<div class="err-msg"><?php echo $errMsg ?></div>

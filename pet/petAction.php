@@ -3,6 +3,7 @@
     date_default_timezone_set("America/Denver");
     $current_date = new DateTime('now');
     $current_time = date_format($current_date, "m-d-Y H:i:s");
+
     $newLevel = 100;
     $id = $_GET['petID'];
 

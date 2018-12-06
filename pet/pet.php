@@ -21,8 +21,7 @@
 <body>
     <!--Include the navigation bar-->
     <section>
-        <?php 
-        
+        <?php         
             function updateLevel($type, $amount, $id, $conn){
                 if($type == 'energy'){
                     $sql = "UPDATE Pets SET EnergyLevel='$amount' WHERE PetID='$id'";

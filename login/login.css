@@ -4,7 +4,8 @@
 	display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 20%;
+	width: 300px;
+	background-color: #bde8ef;
 }
 
 .err-msg {
@@ -14,4 +15,28 @@
 
 p {
 	text-align: center;
+}
+
+.login-pages { 
+	background-image: linear-gradient(-45deg, #4CA1AF, #bde8ef); 
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
+.login-pages fieldset { 
+	border: none;
+	text-align: center;
+}
+
+.login-pages fieldset input { 
+	position: relative; 
+	width: 100%; 
+	background-color: #bde8ef;
+	border: solid black 1px;
+	text-align: center; 
+}
+
+#submit { 
+	background-color: rgba(36, 124, 138, 0.966) ; 
+	color: white; 
 }
