@@ -3,9 +3,16 @@
     date_default_timezone_set("America/Denver");
     $current_date = new DateTime('now');
     $current_time = date_format($current_date, "m-d-Y H:i:s");
+    $basedir = "../";
 
     $newLevel = 100;
     $id = $_GET['petID'];
+
+    if($_GET['action'] == 'free'){
+        $sqlDelete = "DELETE FROM Pets WHERE PetID='$id'";
+        $conn->query($sqlDelete);
+        return;
+    }
 
     if($_GET['action'] == 'nap'){
         $sqlUpdate = $conn->prepare("UPDATE Pets SET EnergyLevel=?, LastNap=? WHERE PetID='$id'");

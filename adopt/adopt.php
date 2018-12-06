@@ -65,9 +65,13 @@
 				$speciesFromTable = $conn->query($sql);
 				$row = mysqli_fetch_assoc($speciesFromTable);
 				$speciesID = $row['SpeciesID'];
+				$currentTime = new DateTime('now');
+				$last_walked = date_format($current_date, "m-d-Y H:i:s");
+				$last_fed = date_format($current_date, "m-d-Y H:i:s");
+				$last_nap = date_format($current_date, "m-d-Y H:i:s");
 
 				$sql = "INSERT INTO Pets (Owner, Name, Species, HealthLevel, LastWalked, HungerLevel, LastFed, EnergyLevel, LastNap) VALUES 
-					('$ownerID', '$petName', '$speciesID', 100, 100, 100, 100, 100, 100)";
+					('$ownerID', '$petName', '$speciesID', 100, '$last_walked', 100, '$last_fed', 100, '$last_nap')";
 				$conn->query($sql);
 				header("Location: " . $basedir);
 			}

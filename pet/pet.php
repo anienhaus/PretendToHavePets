@@ -40,6 +40,9 @@
             $sql = "SELECT * FROM Pets WHERE PetID='$petID'";
             $pet = $conn->query($sql);
             $petInfo = mysqli_fetch_assoc($pet);
+            if($pet->num_rows == 0){
+                header("Location: /PretendToHavePets");
+            }
             echo "<h2>" . $petInfo['Name'] . "</h2>";
 
             date_default_timezone_set("America/Denver");
@@ -134,7 +137,7 @@
             $imagePath = $row['ImagePath'];
         ?>
         <span>
-            <?php
+            <?php 
                 if($petInfo['EnergyLevel'] < 10) {
                     echo "I need a nap!";
                 }
@@ -152,14 +155,20 @@
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function() {
                         if (this.readyState == 4 && this.status == 200) {
+                            if(event == 'free'){
+                                window.location.href = '/PretendToHavePets';
+                            }
                             if(event == 'nap'){
                                 $('#energy').html("Energy: 100");
+                                $('span').html("");
                             }
                             if(event == 'feed'){
                                 $('#hunger').html("Hunger: 100");
+                                $('span').html("");
                             }
                             if(event == 'walk'){
                                 $('#health').html("Health: 100");
+                                $('span').html("");
                             }
                         }
                     }
@@ -177,5 +186,6 @@
             <p id="health">Health: <?php echo $petInfo['HealthLevel'];?></p>
             <button onclick='action("walk");'>Take me for a walk</button>
         </fieldset>
+        <button id="free" onclick='action("free");'>Let me into the wild</button>
     <section>
 </body>
