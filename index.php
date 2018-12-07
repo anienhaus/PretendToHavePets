@@ -3,7 +3,7 @@
 
 <head>
 <?php
-$basedir = "/PretendToHavePets/";
+$basedir = "";
 $current = "index";
 include "check_session.php";
 ?>
