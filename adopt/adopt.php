@@ -35,6 +35,7 @@
 		for(var i = 0; i < speciesInfo.length; i += 2) {
             if(speciesInfo[i] == ($("select").find(":selected").val())){
                 $("#picture").css({"width": "300px", "height": "260px"}).attr("src", "../" + speciesInfo[i + 1]);
+                $("#picture").css({"display": "block"});
             }
         }
 	}

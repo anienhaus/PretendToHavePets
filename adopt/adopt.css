@@ -1,8 +1,9 @@
 img {
     text-align: center;
-    position: fixed;
+    position: absolute;
     align-content: center;
     margin: 10% 25%;
+    display: none;
 }
 
 legend {
