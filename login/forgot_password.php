@@ -49,7 +49,6 @@
 			$insertQuery = "INSERT INTO ResetCodes (UserID, Code) VALUES ($userID, '$resetCode')";
 			$conn->query($insertQuery);
 			// Send email with reset code
-			// TODO: Test this!
 			mail("$email", "Your Password Reset Code", "Your password reset code is $resetCode.");
 			// Redirect to reset page
 			header("Location: password_reset.php");

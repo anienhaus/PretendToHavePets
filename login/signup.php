@@ -1,4 +1,9 @@
 <?php
+	error_reporting(E_ALL);
+	ini_set('display_errors', True);
+?>
+
+<?php
 	// If logged in, redirect to the index
 	session_start();
 	$_SESSION['LAST_ACTIVITY'] = $_SERVER['REQUEST_TIME']; 
@@ -55,8 +60,7 @@
 			$insertQuery = "INSERT INTO Activations (Code, Username, Password, Name, Email) VALUES ('$code', '$username', '$password', '$name', '$email')";
 			$conn->query($insertQuery);
 			// Send confirmation email
-			//mail($email, "Pretend to Have Pets Signup Confirmation", "Your confirmation code is $code.");
-			//echo '<a href=\"mailto:$email\">';
+			mail($email, "Pretend to Have Pets Signup Confirmation", "Your confirmation code is $code.");
 			// Redirect to confirmation page
 			header("Location: confirmation.php");
 		}
