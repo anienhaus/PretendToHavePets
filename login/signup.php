@@ -1,3 +1,7 @@
+
+<!doctype html>
+<html lang="en">
+
 <?php
 	// If logged in, redirect to the index
 	session_start();
@@ -6,10 +10,6 @@
 		header("Location: ../index.php");
 	}
 ?>
-
-<!doctype html>
-
-<html lang="en">
 
 <head>
 	<title>Pretend to Have Pets</title>
@@ -104,7 +104,7 @@
 					<label for="confirm-password">Confirm Password: </label><br>
 					<input type="password" id="confirm-password" name="confirm-password" onkeyup="checkPasswords()" value="<?php echo $confirmPassword ?>" required>
 					<br>
-					<input id="submit" type="submit" value="Sign Up!" id="submit-login">
+					<input id="submit" type="submit" value="Sign Up!">
 				</div>
 			</fieldset>
 			<div class="err-msg">
@@ -117,7 +117,6 @@
 		<p>Already a member? <a href="login.php">Sign In</a></p>
 	</section>
 
-</body>
 
 <script>
 	
@@ -170,4 +169,5 @@
 		
 </script>
 
+</body>
 </html>

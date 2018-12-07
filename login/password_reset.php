@@ -1,3 +1,7 @@
+<!doctype html>
+
+<html lang="en">
+
 <?php
 	// If logged in, redirect to the index
 	session_start();
@@ -6,12 +10,7 @@
 		header("Location: ../index.php");
 	}
 	$current="resetPassword";
-	include "../check_session.php";
 ?>
-
-<!doctype html>
-
-<html lang="en">
 
 <head>
 	<title>Pretend to Have Pets</title>
@@ -107,7 +106,7 @@
 					<label for="confirm-password">Confirm Password: </label><br>
 					<input type="password" id="confirm-password" name="confirm-password" onkeyup="checkPasswords()" value="<?php echo $confirmPassword ?>" required>
 					<br>
-					<input type="submit" value="Reset Password" id="submit-login">
+					<input type="submit" value="Reset Password" >
 				</div>
 			</fieldset>
 			<div class="err-msg"><?php echo $errMsg ?>
@@ -115,8 +114,6 @@
 			</div>
 		</form>
 	</section>
-
-</body>
 
 <script>
 
@@ -134,4 +131,5 @@
 		
 </script>
 
+</body>
 </html>

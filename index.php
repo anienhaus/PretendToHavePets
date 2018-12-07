@@ -1,13 +1,12 @@
+<!doctype html>
+<html lang="en">
+
+
 <?php
 $basedir = "/PretendToHavePets/";
 $current = "index";
 include "check_session.php";
 ?>
-
-<!doctype html>
-
-<html lang="en">
-
 <head>
 	<title>Pretend to Have Pets</title>
 	<link rel="stylesheet" href="pretendtohavepets.css">
@@ -17,8 +16,10 @@ include "check_session.php";
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
+
 <!--The body of the webpage-->
 <body>
+
 	<!--Include the navigation bar-->
 	<?php 
 		include 'navbar.php';
@@ -51,9 +52,9 @@ include "check_session.php";
 					$imagePath = $sRow['ImagePath'];
 
 					echo "<div class='petSquare'>";
-					echo "<a href='" . $basedir . "pet/pet.php?id=" . $row['PetID'] . "'>";
+					echo "<a style='text-decoration: none;' href='" . $basedir . "pet/pet.php?id=" . $row['PetID'] . "'>";
 					echo "<p class='petName'>" . $row['Name'] . "</p>";
-					echo "<img id='picture' style='width: 300; height: 260;' src='" . $imagePath . "'>";
+					echo "<img alt='image of $species' style='width: 300px; height: 260px;' src='" . $imagePath . "'>";
 					echo "</a>";
 					echo "</div>";
 				}
