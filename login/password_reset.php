@@ -2,6 +2,8 @@
 
 <html lang="en">
 
+<head>
+	<title>Pretend to Have Pets</title>
 <?php
 	// If logged in, redirect to the index
 	session_start();
@@ -11,9 +13,6 @@
 	}
 	$current="resetPassword";
 ?>
-
-<head>
-	<title>Pretend to Have Pets</title>
 	<link rel="stylesheet" href="../pretendtohavepets.css">
 	<link rel="stylesheet" href="login.css">
 	<meta charset="UTF-8">
@@ -23,8 +22,7 @@
 </head>
 
 <!--The body of the webpage-->
-<body class="main">
-
+<body class="login-pages">
 	<?php
 	// Connect to the database
 	include "../database_signin.php";
@@ -88,7 +86,7 @@
 	<h1>Pretend to Have Pets</h1>
 	<!--Page content-->
 	<section>
-		<h2 class="page_title">Reset Password</h2>
+		<h2>Reset Password</h2>
 		<p>Please enter the password reset code that was emailed to you.<br>
 		Didn't receive a code? <a href="forgot_password.php">Request a Code</a></p>
 		<form id="reset-password" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
@@ -106,7 +104,7 @@
 					<label for="confirm-password">Confirm Password: </label><br>
 					<input type="password" id="confirm-password" name="confirm-password" onkeyup="checkPasswords()" value="<?php echo $confirmPassword ?>" required>
 					<br>
-					<input type="submit" value="Reset Password" >
+					<input id="submit" type="submit" value="Reset Password" >
 				</div>
 			</fieldset>
 			<div class="err-msg"><?php echo $errMsg ?>
