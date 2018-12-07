@@ -1,13 +1,12 @@
+<!doctype html>
+<html lang="en">
+
 <?php
     $basedir = "../";
     $current = "pet";
     include "../check_session.php";
     include "../database_signin.php";
 ?>
-
-<!doctype html>
-
-<html lang="en">
 
 <head>
     <title>Pretend to Have Pets</title>
@@ -156,7 +155,7 @@
                 }
             ?>    
         </span>
-        <img src=<?php echo "../" . $imagePath;?>>
+        <img alt="An image of the selected pet" src=<?php echo "../" . $imagePath;?>>
         <script>
             //Handles pet interaction clicks with an AJAX call to update the database
             function action(event){
@@ -187,16 +186,16 @@
             }
         </script>
         <div class="stats">
-        <fieldset>
-            <legend>Pet Stats</legend>
-            <p id="energy">Energy: <?php echo $petInfo['EnergyLevel'];?></p> 
-            <button onclick="action('nap');">Take a nap</button>
-            <p id="hunger">Hunger: <?php echo $petInfo['HungerLevel'];?></p>
-            <button onclick='action("feed");'>Feed me</button>
-            <p id="health">Health: <?php echo $petInfo['HealthLevel'];?></p>
-            <button onclick='action("walk");'>Take me for a walk</button>
-        </fieldset>
-        <button id="free" onclick='action("free");'>Release to wild</button>
+            <fieldset>
+                <legend>Pet Stats</legend>
+                <p id="energy">Energy: <?php echo $petInfo['EnergyLevel'];?></p> 
+                <button onclick="action('nap');">Take a nap</button>
+                <p id="hunger">Hunger: <?php echo $petInfo['HungerLevel'];?></p>
+                <button onclick='action("feed");'>Feed me</button>
+                <p id="health">Health: <?php echo $petInfo['HealthLevel'];?></p>
+                <button onclick='action("walk");'>Take me for a walk</button>
+            </fieldset>
+            <button id="free" onclick='action("free");'>Release to wild</button>
         </div>
-    <section>
+    </section>
 </body>

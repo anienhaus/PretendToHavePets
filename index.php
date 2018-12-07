@@ -1,12 +1,11 @@
+<!doctype html>
+<html lang="en">
+
 <?php
 $basedir = "/PretendToHavePets/";
 $current = "index";
 include "check_session.php";
 ?>
-
-<!doctype html>
-
-<html lang="en">
 
 <head>
 	<title>Pretend to Have Pets</title>
@@ -51,9 +50,9 @@ include "check_session.php";
 					$imagePath = $sRow['ImagePath'];
 
 					echo "<div class='petSquare'>";
-					echo "<a href='" . $basedir . "pet/pet.php?id=" . $row['PetID'] . "'>";
+					echo "<a style='text-decoration: none;' href='" . $basedir . "pet/pet.php?id=" . $row['PetID'] . "'>";
 					echo "<p class='petName'>" . $row['Name'] . "</p>";
-					echo "<img id='picture' style='width: 300; height: 260;' src='" . $imagePath . "'>";
+					echo "<img id='picture' alt='image of $species' style='width: 300px; height: 260px;' src='" . $imagePath . "'>";
 					echo "</a>";
 					echo "</div>";
 				}

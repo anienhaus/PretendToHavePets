@@ -1,3 +1,6 @@
+<!doctype html>
+<html lang="en">
+
 <?php
 	$basedir = "../";
 	$current = "adopt";
@@ -6,10 +9,6 @@
 	$query = "SELECT * FROM Species";
 	$species = $conn->query($query);
 ?>
-
-<!doctype html>
-
-<html lang="en">
 
 <head>
 	<title>Pretend to Have Pets</title>
@@ -79,6 +78,12 @@
 				$last_walked = date_format($current_date, "m-d-Y H:i:s");
 				$last_fed = date_format($current_date, "m-d-Y H:i:s");
 				$last_nap = date_format($current_date, "m-d-Y H:i:s");
+
+				//Last stat updates will automatically be the current time when adopted
+				$currentTime = new DateTime('now');
+				$last_walked = date_format($currentTime, "m-d-Y H:i:s");
+				$last_fed = date_format($currentTime, "m-d-Y H:i:s");
+				$last_nap = date_format($currentTime, "m-d-Y H:i:s");
 
 				$sql = "INSERT INTO Pets (Owner, Name, Species, HealthLevel, LastWalked, HungerLevel, LastFed, EnergyLevel, LastNap) VALUES 
 					('$ownerID', '$petName', '$speciesID', 100, '$last_walked', 100, '$last_fed', 100, '$last_nap')";

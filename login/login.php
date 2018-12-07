@@ -1,4 +1,6 @@
 <!doctype html>
+<html lang="en">
+
 <?php
 	// If logged in, redirect to the index
 	session_start();
@@ -9,7 +11,6 @@
 ?>
 
 
-<html lang="en">
 <link rel="icon" type="image/ico" href="../images/favicon.ico">
 
 <head>
@@ -82,7 +83,7 @@
 					<label for="password">Password: </label><br>
 					<input type="password" id="password" name="password" value="<?php echo $password ?>" required>
 					<br>
-					<input id="submit" type="submit" value="Log In" id="submit-login">
+					<input id="submit" type="submit" value="Log In">
 				</div>
 			</fieldset>
 			<div class="err-msg"><?php echo $errMsg ?></div>

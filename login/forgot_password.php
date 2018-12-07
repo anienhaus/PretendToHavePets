@@ -1,3 +1,6 @@
+<!doctype html>
+<html lang="en">
+
 <?php
 	// If logged in, redirect to the index
 	session_start();
@@ -6,12 +9,7 @@
 		header("Location: ../index.php");
 	}
 	$current="changePassword";
-	include "../check_session.php";
 ?>
-
-<!doctype html>
-
-<html lang="en">
 
 <head>
 	<title>Pretend to Have Pets</title>
@@ -91,16 +89,13 @@
 					<label for="email">Email: </label><br>
 					<input type="text" id="email" name="email" value="<?php echo $email ?>" required>
 					<br>
-					<input id="submit" type="submit" value="Send" id="submit-login">
+					<input id="submit" type="submit" value="Send">
 				</div>
 			</fieldset>
 			<div class="err-msg" id="err-msg"><?php echo $errMsg ?></div>
 		</form>
 		<p>Wait! <a href="login.php">I suddenly remembered my password!</a></p>
 	</section>
-
-</body>
-
 <script>
 
 	// Check that all of the given fields are appropriate
@@ -117,5 +112,7 @@
 	});
 		
 </script>
+</body>
+
 
 </html>
