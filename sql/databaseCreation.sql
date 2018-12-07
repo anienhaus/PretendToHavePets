@@ -56,6 +56,6 @@ CREATE TABLE Activations (
 );
 
 -- Populate species table --
-INSERT INTO Species (Name, ImagePath) VALUES ("Cat", "images/cat.png"), ("Dog", "images/dog.jpg"), ("Hamster", "images/hamster.jpg"), ("Ferret", "images/ferret.png"),
-    ("Bird", "images/bird.jpg"), ("Fish", "images/fish.png"), ("Chinchilla", "images/chinchilla.png"), ("Dragon", "images/dragon.png"), ("Wolf", "images/wolf.png"), 
+INSERT INTO Species (Name, ImagePath) VALUES ("Cat", "images/cat.png"), ("Dog", "images/dog.png"), ("Hamster", "images/hamster.png"), ("Ferret", "images/ferret.png"),
+    ("Bird", "images/bird.png"), ("Fish", "images/fish.png"), ("Chinchilla", "images/chinchilla.png"), ("Dragon", "images/dragon.png"), ("Wolf", "images/wolf.png"), 
     ("Flying Squirrel", "images/flyingsquirrel.png");

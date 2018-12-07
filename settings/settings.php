@@ -1,12 +1,11 @@
+<!doctype html>
+<html lang="en">
+
 <?php
 	$basedir = "../";
 	$current="settings";
 	include "../check_session.php";
 ?>
-
-<!doctype html>
-
-<html lang="en">
 
 <head>
 	<title>Pretend to Have Pets</title>
@@ -79,14 +78,12 @@
 					<label for="new-confirm">Confirm New Password: </label><br>
 					<input type="password" id="new-confirm" name="new-confirm" onkeyup="checkPasswords()" value="<?php echo $newConfirm ?>" required>
 					<br>
-					<input id="submit" type="submit" value="Submit" id="submit-new-password">
+					<input id="submit" type="submit" value="Submit">
 				</div>
 			</fieldset>
 			<div class="err-msg" id="change-password-err-msg"><?php echo $errMsg ?></div>
 		</form>
 	</section>
-</body>
-
 <script>
 	
 	// Check if the two typed passwords match, outputting an error message if they don't
@@ -108,5 +105,7 @@
 	});
 		
 </script>
+</body>
+
 		
 </html>
