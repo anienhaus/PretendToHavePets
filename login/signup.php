@@ -1,3 +1,7 @@
+
+<!doctype html>
+<html lang="en">
+
 <?php
 	error_reporting(E_ALL);
 	ini_set('display_errors', True);
@@ -11,10 +15,6 @@
 		header("Location: ../index.php");
 	}
 ?>
-
-<!doctype html>
-
-<html lang="en">
 
 <head>
 	<title>Pretend to Have Pets</title>
@@ -108,7 +108,7 @@
 					<label for="confirm-password">Confirm Password: </label><br>
 					<input type="password" id="confirm-password" name="confirm-password" onkeyup="checkPasswords()" value="<?php echo $confirmPassword ?>" required>
 					<br>
-					<input id="submit" type="submit" value="Sign Up!" id="submit-login">
+					<input id="submit" type="submit" value="Sign Up!">
 				</div>
 			</fieldset>
 			<div class="err-msg">
@@ -121,7 +121,6 @@
 		<p>Already a member? <a href="login.php">Sign In</a></p>
 	</section>
 
-</body>
 
 <script>
 	
@@ -174,4 +173,5 @@
 		
 </script>
 
+</body>
 </html>

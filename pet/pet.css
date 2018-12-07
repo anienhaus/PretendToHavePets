@@ -1,6 +1,7 @@
 img {
     height: 260px;
     width: 300px;
+    margin-top: 10%;
 }
 
 span {
@@ -35,6 +36,7 @@ button:hover {
 fieldset { 
     border: none; 
 }
+
 
 .stats { 
     padding-top: 100px; 
