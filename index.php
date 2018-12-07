@@ -1,13 +1,12 @@
 <!doctype html>
 <html lang="en">
 
-
+<head>
 <?php
 $basedir = "/PretendToHavePets/";
 $current = "index";
 include "check_session.php";
 ?>
-<head>
 	<title>Pretend to Have Pets</title>
 	<link rel="stylesheet" href="pretendtohavepets.css">
 	<meta charset="UTF-8">
